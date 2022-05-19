@@ -1,6 +1,8 @@
 import React from 'react';
+import Confetti from 'react-confetti';
 import Die from './components/Die';
 import Tenzie from './components/Tenzie';
+import { nanoid } from 'nanoid';
 
 export default function App() {
 
@@ -12,7 +14,7 @@ export default function App() {
         const diceValues = [];
         for (let i = 0; i < 10; i++) {
             diceValues.push({
-                id: i + 1,
+                id: nanoid(),
                 value: generateRandomValues(),
                 held: false
             });
@@ -55,6 +57,7 @@ export default function App() {
 
     return (
         <main className='App'>
+            {tenzie && <Confetti />}
             <Tenzie />
             <div className='dice-container'>
                 {dieElements}
